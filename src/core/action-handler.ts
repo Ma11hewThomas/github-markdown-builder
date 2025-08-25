@@ -11,8 +11,8 @@ export async function runAction(): Promise<void> {
       required: true
     })
     const jsonFilePath = core.getInput('json-file-path')
-    const summary = core.getInput('summary')?.toLowerCase() !== 'false'
-    const pullRequest = core.getInput('pull-request')?.toLowerCase() === 'true'
+    const summary = core.getBooleanInput('summary')
+    const pullRequest = core.getBooleanInput('pull-request')
 
     const templateSource = readTemplate(templatePath)
     const jsonData = jsonFilePath ? readJsonFile(jsonFilePath) : {}
