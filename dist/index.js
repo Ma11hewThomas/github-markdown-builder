@@ -38378,8 +38378,8 @@ async function runAction() {
             required: true
         });
         const jsonFilePath = core.getInput('json-file-path');
-        const summary = core.getInput('summary');
-        const pullRequest = core.getInput('pull-request');
+        const summary = core.getBooleanInput('summary');
+        const pullRequest = core.getBooleanInput('pull-request');
         const templateSource = (0, file_utils_1.readTemplate)(templatePath);
         const jsonData = jsonFilePath ? (0, file_utils_1.readJsonFile)(jsonFilePath) : {};
         const markdown = (0, markdown_utils_1.generateMarkdown)(templateSource, jsonData);
@@ -38388,7 +38388,9 @@ async function runAction() {
         }
         console.log('Generated Markdown:');
         console.log(markdown);
-        console.log('summary' + summary);
+        console.log('summary: ' + summary);
+        console.log('pullRequest: ' + pullRequest);
+        console.log('eventName: ' + github_2.context.eventName);
         if (summary)
             core.summary.addRaw(markdown).write();
         (0, github_utils_1.getAllGitHubContext)();
