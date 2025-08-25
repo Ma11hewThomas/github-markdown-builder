@@ -31,10 +31,6 @@ export async function runAction(): Promise<void> {
     console.log('Generated Markdown:')
     console.log(markdown)
 
-    console.log('summary: ' + summary)
-    console.log('pullRequest: ' + pullRequest)
-    console.log('eventName: ' + context.eventName)
-
     if (summary) core.summary.addRaw(markdown).write()
 
     getAllGitHubContext()

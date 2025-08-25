@@ -38388,9 +38388,6 @@ async function runAction() {
         }
         console.log('Generated Markdown:');
         console.log(markdown);
-        console.log('summary: ' + summary);
-        console.log('pullRequest: ' + pullRequest);
-        console.log('eventName: ' + github_2.context.eventName);
         if (summary)
             core.summary.addRaw(markdown).write();
         (0, github_utils_1.getAllGitHubContext)();
